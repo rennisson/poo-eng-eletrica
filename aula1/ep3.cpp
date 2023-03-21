@@ -2,6 +2,7 @@
 
 bool assistiuVideosRepetidos(std::string urls[], int quantidade);
 
+/*
 int main() {
     std::cout << "------ TESTES DA CLASSE assistiuVideosRepetidos() -------\n";
 
@@ -17,12 +18,13 @@ int main() {
                 << assistiuVideosRepetidos(urls2, 5)
                 << " e deve retornar TRUE\n";
 }
+*/
 
 bool assistiuVideosRepetidos(std::string urls[], int quantidade) {
     // Não é necessário comparar o ultimo elemento do array, por isso utilizamos (quantidade - 1)
     for (int i = 0; i < quantidade - 1; i++) {
-        for (int j = 0; j < quantidade - i - 1; j++) {
-            if (urls[i] == urls[j]) {
+        for (int j = i+1; j < quantidade; j++) {
+            if (urls[j] == urls[i]) {
                 return true;
             }
         }

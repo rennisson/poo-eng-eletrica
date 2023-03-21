@@ -2,6 +2,7 @@
 
 int tempoVisualizacaoTotal(int visualizacoes[], int duracoes[], int quantidade);
 
+/*
 int main() {
     std::cout << "------ TESTES DA CLASSE tempoVisualizacaoTotal() -------\n";
 
@@ -29,6 +30,7 @@ int main() {
                 << tempoVisualizacaoTotal(visualizacoes3, duracoes3, quantidade)
                 << " e deve retornar 30\n";
 }
+*/
 
 int tempoVisualizacaoTotal(int visualizacoes[], int duracoes[], int quantidade) {
 
