@@ -17,7 +17,7 @@ using namespace std;
 string* encontrarVideo (string titulos[], int duracoes[], string titulo, int duracao, int quantidade);
 
 /**
- *  Retorna a média de duracoes
+ * Retorna a média de duracoes
  * @param duracoes vetor que guarda a duracao dos videos
  * @param quantidade tamanho do vetor 'duracoes'
  * @param[out] minimo guarda o valor minimo do vetor
@@ -39,17 +39,31 @@ int main() {
     // FACA TESTES
     string titulos[] = {"Gameplay de Elden Ring", "lofi hip hop radio", "portal speedrun"};
     int duracoes[] = {100, 60, 9};
+    int quantidade = sizeof(duracoes) / sizeof(duracoes[0]);
 
-    cout << encontrarVideo(titulos, duracoes, "portal speedrun", 9, 3) << endl;
+    cout << encontrarVideo(titulos, duracoes, "portal speedrun", 9, quantidade) << endl;
 
-    int minimo;
-    int maximo;
+    cout << encontrarVideo(titulos, duracoes, "x", 0, quantidade) << endl;
+
+    string titulos[] = {"Gameplay de Elden Ring", "lofi hip hop radio", "portal speedrun"};
+    int duracoes[] = {9, 60, 100};
+    int quantidade = sizeof(duracoes) / sizeof(duracoes[0]);
+
+    int minimo = 0;
+    int maximo = 0;
     int *pMaximo = &maximo;
 
-    cout << calcularEstatisticas(duracoes, 3, minimo, pMaximo) << endl;
+    cout << calcularEstatisticas(duracoes, quantidade, minimo, pMaximo) << endl;
 
     int duracoes1[10] = {};
-    cout << calcularEstatisticas(duracoes, 10, minimo, pMaximo) << endl;
+    quantidade = sizeof(duracoes1) / sizeof(duracoes1[0]);
+    cout << calcularEstatisticas(duracoes, 0, minimo, pMaximo) << endl;
+
+    string titulos3[] = {"TESTE"};
+    int duracoes[] = {9};
+    int quantidade = sizeof(duracoes) / sizeof(duracoes[0]);
+
+    cout << calcularEstatisticas(duracoes, quantidade, minimo, pMaximo) << endl;
 
     // Implementar!
     return 0;
@@ -58,20 +72,23 @@ int main() {
 
 string* encontrarVideo (string titulos[], int duracoes[], string titulo, int duracao, int quantidade) {
 
-    int z = 0;
+    string *pEndereco;
+    pEndereco = NULL;
+
     for (int i = 0; i < quantidade; i++) {
         if (titulos[i] == titulo && duracoes[i] == duracao) {
-            return &titulos[i];
+            pEndereco = &titulos[i];
         }
     }
 
-    return NULL;
+    return pEndereco;
 }
 
 double calcularEstatisticas (int duracoes[], int quantidade, int& minimo, int* maximo) {
 
     double media = 0;
 
+    // Array vazio
     if (quantidade == 0) {
         minimo = 0;
         *maximo = 0;
@@ -79,21 +96,22 @@ double calcularEstatisticas (int duracoes[], int quantidade, int& minimo, int* m
         return media;
     }
 
+    // Tratamento dos valores 'minimo' e 'maximo'
     if (minimo > *maximo) {
         int temp = *maximo;
         *maximo = minimo;
         minimo = temp;
     }
 
-    int valorMinimo = 0;
-    int valorMaximo = 0;
+    *maximo = duracoes[0];
+    minimo = duracoes[0];
     int soma = 0;
     
-    for (int i = 0; i < quantidade; i++) {
-        if (duracoes[i] >= valorMaximo) {
+    for (int i = 1; i < quantidade; i++) {
+        if (duracoes[i] >= *maximo) {
             *maximo = duracoes[i];
         }
-        else if (duracoes[i] <= valorMinimo) {
+        else if (duracoes[i] <= minimo) {
             minimo = duracoes[i];
         }
 
