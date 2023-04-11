@@ -24,7 +24,7 @@ bool repetido(Video* v1, Video* v2);
 // IMPLEMENTE OS METODOS DA CLASSE
 
 /**
- * Incrementa mais um no atributo 'visualizacoes' se 'tempo' é maior que 30% de 'duracao'
+ * Incrementa 1 no atributo 'visualizacoes' se 'tempo' é maior que 30% de 'duracao'
  * @param tempo tempo de video assistido
 */
 void Video::assistir(int tempo) {
@@ -101,10 +101,10 @@ void teste () {
   video->assistir(18);
   video->assistir(2);
   video->assistir(57);
+  video->imprimir();
 
   video->assistir(61);
   video->assistir(43);
-  video->imprimir();
 
   Video *video2 = new Video;
   video2->nome = "bidoofwave";
@@ -114,20 +114,22 @@ void teste () {
   video2->assistir(487);
 
   Canal *canal = new Canal;
+  canal->nome = "Nintendo";
   canal->postar(video);
   canal->postar(video2);
 
   video2->imprimir();
-  cout << "Duração total do canal: " << canal->getDuracaoTotal() << endl;
-  cout << "Total de visualizações do canal: " << canal->getTotalDeVisualizacoes() << endl;
+
+  cout << canal->getDuracaoTotal() << endl;
+  cout << canal->getTotalDeVisualizacoes() << endl;
 
 }
 
 
 //* COMENTE O MAIN AO SUBMETER
-int main () {
-  teste();
-  return 0;
-}
+// int main () {
+//   teste();
+//   return 0;
+// }
 
 //*/
