@@ -1,7 +1,11 @@
 #ifndef VIDEO_H
 #define VIDEO_H
 
+#ifndef STRING
+#define STRING
 #include <string>;
+#endif // STRING
+
 using namespace std;
 
 class Video {
