@@ -16,9 +16,12 @@ private:
   int quantidade = 0;
 
 public:
+  string getNome();
   void setNome(string nome);
+  int getQuantidade();
   int getDuracaoTotal();
   int getTotalDeVisualizacoes();
+  Video** getVideos();
   bool postar(Video* v);
   void imprimir();
 };

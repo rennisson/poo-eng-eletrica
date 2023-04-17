@@ -2,8 +2,23 @@
 #include "Video.h"
 #include <iostream>
 
+string Canal::getNome() {
+  return this->nome;
+}
+
 void Canal::setNome(string nome) {
-    this->nome = nome;
+  this->nome = nome;
+}
+
+int Canal::getQuantidade() {
+  return this->quantidade;
+}
+
+/**
+ * Retorna um ponteiro de ponteiro de Video
+*/
+Video** Canal::getVideos() {
+  return videos;
 }
 
 /**
