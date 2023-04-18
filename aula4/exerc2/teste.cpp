@@ -48,10 +48,7 @@ void teste () {
   for (int i = 0; i < 8; i++) {
     aux += 4;
     video3->assistir(aux);
-    video3->imprimir();
   }
-
-  video3->imprimir();
 
   canal->postar(video3);
   canal->imprimir();

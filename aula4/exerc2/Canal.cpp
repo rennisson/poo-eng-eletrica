@@ -26,9 +26,9 @@ Video** Canal::getVideos() {
  * @return retorna a duração total do canal. Se não há vídeos postados, retorna ZERO
 */
 int Canal::getDuracaoTotal() {
-  float soma = 0;
-  for (Video *video : this->videos) {
-    soma += video->getDuracao();
+  int soma = 0;
+  for (int i = 0; i < this->quantidade; i++) {
+    soma += this->videos[i]->getDuracao();
   }
   return soma;
 }
@@ -38,9 +38,9 @@ int Canal::getDuracaoTotal() {
  * @return retorna o numero total de visualizações do canal. Se não há vídeos postados, retorna ZERO
 */
 int Canal::getTotalDeVisualizacoes() {
-  float soma = 0;
-  for (Video *video : this->videos) {
-    soma += video->getVisualizacoes();
+  int soma = 0;
+  for (int i = 0; i < this->quantidade; i++) {
+    soma += this->videos[i]->getVisualizacoes();
   }
   return soma;
 }
@@ -50,23 +50,26 @@ bool Canal::postar(Video* v) {
     return false;
   }
 
-  for (int i = 0; i < MAXIMO_VIDEOS; i++) {
-    if (this->videos[i] != NULL) {
-      this->videos[i] = v;
-      return true;
-    }
+  if (this->quantidade > 14) return false;
+
+  for (int i = 0; i < this->quantidade; i++) {
+      if (v == this->videos[i]) return false;
   }
 
-  // Se chegou aqui, é porque não há mais espaço no vetor 'videos'
-  return false;
+  this->videos[this->quantidade] = v;
+
+  this->quantidade++;
+  return true;
 }
 
 void Canal::imprimir() {
     cout << "Canal: " << this->nome << " - " << this->quantidade << " videos - "
         << this->getTotalDeVisualizacoes() << " visualizacoes totais" << endl;
     
-    for (Video *video : this->videos) {
-      video->imprimir();
+    cout << endl;
+    
+    for (int i = 0; i < this->quantidade; i++) {
+      this->videos[i]->imprimir();
       cout << endl;
     }
 }

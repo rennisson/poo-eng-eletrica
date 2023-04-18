@@ -1,12 +1,7 @@
 #ifndef CANAL_H
 #define CANAL_H
 #define MAXIMO_VIDEOS 15
-
-#ifndef STRING
-#define STRING
 #include <string>
-#endif // STRING
-
 #include "Video.h"
 
 class Canal {
