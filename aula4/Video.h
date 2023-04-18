@@ -3,18 +3,17 @@
 
 #ifndef STRING
 #define STRING
-#include <string>;
+#include <string>
 #endif // STRING
 
 using namespace std;
 
 class Video {
-private: 
+
+public:
   string nome;
   int duracao;
   int visualizacoes = 0;
-
-public:
   string getNome();
   void setNome(string nome);
   int getDuracao();

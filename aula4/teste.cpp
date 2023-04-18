@@ -1,7 +1,9 @@
 #include "Video.h"
 #include "Canal.h"
 #include <iostream>
+
 #include <string>
+#define STRING
 
 // Faça os includes necessários
 
@@ -36,6 +38,7 @@ void teste () {
 
   cout << canal->getDuracaoTotal() << endl;
   cout << canal->getTotalDeVisualizacoes() << endl;
+  canal->imprimir();
 
 }
 

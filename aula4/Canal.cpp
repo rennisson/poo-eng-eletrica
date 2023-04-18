@@ -1,5 +1,13 @@
 #include "Canal.h"
 #include "Video.h"
+#include <iostream>
+
+#ifndef STRING
+#define STRING
+#include <string>
+#endif
+
+using namespace std;
 
 void Canal::setNome(string nome) {
     this->nome = nome;
@@ -39,4 +47,21 @@ bool Canal::postar(Video* v) {
   } 
 
   return false;
+}
+
+void Canal::imprimir() {
+    cout << "Canal: " << this->nome << " - " << this->quantidade << " videos - "
+        << this->getTotalDeVisualizacoes() << " visualizacoes totais" << endl;
+
+    cout << endl;
+    
+    if (this->v1 != NULL) {
+      this->v1->imprimir();
+      cout << endl;
+    }
+
+    if (this->v2 != NULL) {
+      this->v2->imprimir();
+      cout << endl;
+    }
 }

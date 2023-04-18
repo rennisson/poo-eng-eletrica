@@ -50,7 +50,6 @@ bool Canal::postar(Video* v) {
     return false;
   }
 
-
   for (int i = 0; i < MAXIMO_VIDEOS; i++) {
     if (this->videos[i] != NULL) {
       this->videos[i] = v;
@@ -68,5 +67,6 @@ void Canal::imprimir() {
     
     for (Video *video : this->videos) {
       video->imprimir();
+      cout << endl;
     }
 }
