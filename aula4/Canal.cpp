@@ -1,5 +1,6 @@
 #include "Canal.h"
 #include "Video.h"
+#include <iostream>
 
 void Canal::setNome(string nome) {
     this->nome = nome;
@@ -39,4 +40,16 @@ bool Canal::postar(Video* v) {
   } 
 
   return false;
+}
+
+void Canal::imprimir() {
+    cout << "Canal: " << this->nome << " - " << this->quantidade << " videos - "
+        << this->getTotalDeVisualizacoes() << " visualizacoes totais" << endl;
+    
+    if (this->v1 != NULL) {
+        this->v1->imprimir();
+    }
+    if (this->v2 != NULL) {
+        this->v2->imprimir();
+    }
 }

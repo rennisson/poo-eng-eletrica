@@ -3,7 +3,7 @@
 
 #ifndef STRING
 #define STRING
-#include <string>;
+#include <string>
 #endif // STRING
 
 using namespace std;

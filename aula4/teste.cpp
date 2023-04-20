@@ -1,7 +1,7 @@
-#include "Video.h"
-#include "Canal.h"
 #include <iostream>
 #include <string>
+#include "Video.h"
+#include "Canal.h"
 
 // Faça os includes necessários
 
@@ -37,6 +37,7 @@ void teste () {
   cout << canal->getDuracaoTotal() << endl;
   cout << canal->getTotalDeVisualizacoes() << endl;
 
+  canal->imprimir();
 }
 
 //* COMENTE O MAIN AO SUBMETER

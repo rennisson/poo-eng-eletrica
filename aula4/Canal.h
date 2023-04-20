@@ -3,7 +3,7 @@
 
 #ifndef STRING
 #define STRING
-#include <string>;
+#include <string>
 #endif // STRING
 
 #include "Video.h"
@@ -20,6 +20,7 @@ public:
   int getDuracaoTotal();
   int getTotalDeVisualizacoes();
   bool postar(Video* v);
+  void imprimir();
 };
 
 #endif // CANAL_H
