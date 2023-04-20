@@ -37,13 +37,27 @@ void teste () {
   cout << canal->getDuracaoTotal() << endl;
   cout << canal->getTotalDeVisualizacoes() << endl;
 
+  video2->assistir(331);
+  video2->assistir(491);
+
+  Video *video3 = new Video;
+  video3->setNome("Direct E3 2021");
+  video3->setDuracao(39);
+
+  int aux = 0;
+  for (int i = 0; i < 8; i++) {
+    aux += 4;
+    video3->assistir(aux);
+  }
+
+  canal->postar(video3);
   canal->imprimir();
 }
 
 //* COMENTE O MAIN AO SUBMETER
-// int main () {
-//   teste();
-//   return 0;
-// }
+int main () {
+  teste();
+  return 0;
+}
 
 //*/

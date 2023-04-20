@@ -45,11 +45,16 @@ bool Canal::postar(Video* v) {
 void Canal::imprimir() {
     cout << "Canal: " << this->nome << " - " << this->quantidade << " videos - "
         << this->getTotalDeVisualizacoes() << " visualizacoes totais" << endl;
+
+    cout << endl;
     
     if (this->v1 != NULL) {
-        this->v1->imprimir();
+      this->v1->imprimir();
+      cout << endl;
     }
+
     if (this->v2 != NULL) {
-        this->v2->imprimir();
+      this->v2->imprimir();
+      cout << endl;
     }
 }
