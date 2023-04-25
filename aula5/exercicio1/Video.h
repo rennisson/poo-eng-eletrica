@@ -8,7 +8,7 @@ class Video {
 private: 
   string nome;
   int duracao;
-  int visualizacoes = 0;
+  int visualizacoes;
 
 public:
   // Construtor

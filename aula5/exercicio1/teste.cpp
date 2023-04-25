@@ -29,14 +29,19 @@ void teste () {
   canal->postar(video1);
   canal->postar(video2);
   canal->postar(video3);
+
+  // for (int i = 0; i < 7; i++) {
+  //   canal->postar(video1);
+  // }
+  // cout << "   " << canal->getQuantidade();
   canal->imprimir();
   
 }
 
 //* COMENTE O MAIN AO SUBMETER
-int main () {
-  teste();
-  return 0;
-}
+// int main () {
+//   teste();
+//   return 0;
+// }
 
 //*/

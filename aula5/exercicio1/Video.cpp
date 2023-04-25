@@ -6,6 +6,7 @@ using namespace std;
 Video::Video(string nome, int duracao) {
     this->nome = nome;
     this->duracao = duracao;
+    this->visualizacoes = 0;
 }
 
 string Video::getNome() {

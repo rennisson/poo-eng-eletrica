@@ -7,8 +7,8 @@ class Canal {
 private:
   string nome;
   int maximoDeVideos;
-  Video **videos = new Video*[maximoDeVideos];
-  int quantidade = 0;
+  Video **videos;
+  int quantidade;
 
 public:
   // Construtor

@@ -7,16 +7,17 @@ class Canal {
 private:
   string nome;
   int maximoDeVideos;
-  Video **videos = new Video*[maximoDeVideos];
-  int quantidade = 0;
+  Video **videos;
+  int quantidade;
 
 public:
   // Construtor
   Canal(string nome, int maximoDeVideos);
-  // Destrutor
+
   ~Canal();
 
   string getNome();
+  void setNome(string nome);
   int getQuantidade();
   int getDuracaoTotal();
   int getTotalDeVisualizacoes();

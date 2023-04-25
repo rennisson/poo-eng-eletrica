@@ -5,6 +5,8 @@
 Canal::Canal(string nome, int maximoDeVideos) {
   this->nome = nome;
   this->maximoDeVideos = maximoDeVideos;
+  this->quantidade = 0;
+  this->videos = new Video*[maximoDeVideos];
 }
 
 string Canal::getNome() {
@@ -51,12 +53,10 @@ int Canal::getTotalDeVisualizacoes() {
 }
 
 bool Canal::postar(Video* v) {
-  if (v->getDuracao() <= 0) {
-    return false;
-  }
+  if (v->getDuracao() <= 0) return false;
+  if (this->quantidade >= this->maximoDeVideos) return false;
 
-  if (this->quantidade > 14) return false;
-
+  // Verifica se o video é repetido
   for (int i = 0; i < this->quantidade; i++) {
       if (v == this->videos[i]) return false;
   }
