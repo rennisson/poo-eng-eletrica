@@ -44,7 +44,7 @@ bool Lista::adicionar(Video* v) {
 }
 
 void Lista::imprimir() {
-    cout << "Lista com " << quantidade << "videos: " << getNome() << " - " << duracao << " minutos" << endl;
+    cout << "Lista com " << quantidade << " videos: " << getNome() << " - " << duracao << " minutos" << endl;
     for (int i = 0; i < quantidade; i++) {
         cout << "\t" << i+1 << ". " << videos[i]->getNome() << endl;
     }

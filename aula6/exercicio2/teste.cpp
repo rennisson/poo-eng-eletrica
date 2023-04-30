@@ -25,6 +25,7 @@ void teste () {
   Conteudo* c1 = new Video("mortal kuddlers", 15);
   Video* v1 = new Video("halo novels", 28);
   lista->adicionar(static_cast<Video*>(c1));
+  lista->adicionar(v1);
   canal->postar(lista);
   
   canal->imprimir();
