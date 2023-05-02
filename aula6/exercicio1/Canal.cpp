@@ -23,6 +23,7 @@ Canal::~Canal() {
   cout << "Canal destruido" << endl;
 }
 
+// Getters e Setters[]
 string Canal::getNome() {
   return this->nome;
 }

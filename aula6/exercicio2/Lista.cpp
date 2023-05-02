@@ -9,10 +9,9 @@ Lista::Lista(string nome, int tamanho) : Conteudo(nome, 0) {
 };
 
 Lista::~Lista() {
-    for (int i = 0; i < quantidade; i++) {
-        delete videos[i];
-    }
     cout << "Lista com " << quantidade << " videos destruida" << endl;
+
+    delete videos;
 }
 
 Video** Lista::getVideos() {
