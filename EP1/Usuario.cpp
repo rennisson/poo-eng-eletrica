@@ -1,10 +1,11 @@
 #include "Usuario.h"
+#include "Canal.h"
 #include <string>
+#include <iostream>
 
 Usuario::Usuario(string nome, string nomeDoCanal, int maximo) {
     this->nome = nome;
-    this->nomeDoCanal = nomeDoCanal;
-    this->maximo = maximo;
+    this->canal = new Canal(nomeDoCanal, maximo);
 };
 
 Usuario::Usuario(string nome, Canal* canal) {
@@ -12,7 +13,10 @@ Usuario::Usuario(string nome, Canal* canal) {
     this->canal = canal;
 };
 
-Usuario::~Usuario() {};
+Usuario::~Usuario() {
+    cout << "Destrutor de Usuario: " << nome << endl;
+    delete canal;
+};
 
 Canal* Usuario::getCanal() {
     return canal;

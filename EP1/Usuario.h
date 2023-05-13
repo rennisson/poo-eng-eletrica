@@ -6,8 +6,6 @@
 class Usuario {
 protected:
     string nome;
-    string nomeDoCanal;
-    int maximo;
     Canal* canal;
 public:
     Usuario(string nome, string nomeDoCanal, int maximo);
