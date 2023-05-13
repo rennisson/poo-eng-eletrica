@@ -25,6 +25,7 @@ bool Plataforma::adicionar (Usuario* usuario) {
             return true;
         }
     }
+    return true;
 }
 
 int Plataforma::getQuantidadeDeUsuarios() {
