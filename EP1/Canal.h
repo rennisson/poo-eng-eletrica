@@ -20,7 +20,6 @@ public:
   virtual ~Canal();
 
   virtual string getNome();
-  virtual void setNome(string nome);
   virtual int getQuantidade();
   virtual int getDuracaoTotal();
   virtual int getTotalDeVisualizacoes();
