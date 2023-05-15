@@ -13,11 +13,13 @@ using namespace std;
 
 bool cadastrar_usuario(Plataforma* plataforma);
 void logar(Plataforma* plataforma);
+void tela_usuario(Plataforma* plataforma, Usuario* usuario);
 void interface();
 
 
 // IMPLEMENTE A FUNCAO TESTE
 void interface() {
+
   Plataforma* plataforma = new Plataforma();
   int opcao = -1;
 
@@ -35,6 +37,7 @@ void interface() {
       break;
     case 2:
       logar(plataforma);
+      break;
     default:
       break;
     }
@@ -46,11 +49,9 @@ bool cadastrar_usuario(Plataforma* plataforma) {
   cout << "Verificado (s/n)? ";
   string verificado;
   cin >> verificado;
-  cout << endl;
   cout << "Digite o nome do usuario: ";
   string nome;
   cin >> nome;
-  cout << endl;
   cout << "Digite o nome do seu canal: ";
   string nomeDoCanal;
   cin >> nomeDoCanal;
@@ -71,14 +72,25 @@ void logar(Plataforma* plataforma) {
     // Bloco que verifica se o usuario é verificado ou não
     UsuarioVerificado* usuarioVerificado = dynamic_cast<UsuarioVerificado*>(usuarios[i]);
     if (usuarioVerificado != NULL) cout << i+1 << ") " << usuarios[i]->getNome() << " (verificado)" << endl;
-    else cout << i << ") " << usuarios[i+1]->getNome() << " (verificado)" << endl;
+    else cout << i+1 << ") " << usuarios[i]->getNome() << endl;
   }
 
-  int usuario;
+  int numeroUsuario;
   cout << "Digite o numero, ou 0 para cancelar: ";
-  cin >> usuario;
+  cin >> numeroUsuario;
 
-  if (usuario == 0) return;
+  if (numeroUsuario == 0) return;
+  tela_usuario(plataforma, usuarios[numeroUsuario-1]);
+}
+
+void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
+  // Verifica se 'usuario' é verificado ou não
+  UsuarioVerificado* usuarioVerificado = dynamic_cast<UsuarioVerificado*>(usuario);
+  if (usuarioVerificado != NULL) cout << "Usuario: " << usuario->getNome() << " (verificado)" << endl;
+  else cout << "Usuario: " << usuario->getNome() << endl;
+
+  cout << "Canal: " << usuario->getCanal()->getNome() << endl;
+  cout << "Quantidade de conteudos no canal: " << usuario->getCanal()->getQuantidade() << endl;
 }
 
 //* COMENTE O MAIN AO SUBMETER
