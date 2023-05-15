@@ -17,14 +17,12 @@ Plataforma::~Plataforma() {
 bool Plataforma::adicionar (Usuario* usuario) {
     if (quantidadeDeUsuarios >= maximoDeUsuarios) return false;
 
-    for (int i = 0; i < maximoDeUsuarios; i++) {
+    for (int i = 0; i <= quantidadeDeUsuarios; i++) {
         if (usuario == usuarios[i]) return false;
-        if (usuarios[i] == NULL) {
-            usuarios[i] = usuario;
-            quantidadeDeUsuarios++;
-            return true;
-        }
     }
+
+    usuarios[quantidadeDeUsuarios] = usuario;
+    quantidadeDeUsuarios++;
     return true;
 }
 
