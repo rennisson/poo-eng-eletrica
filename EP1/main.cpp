@@ -14,6 +14,7 @@ using namespace std;
 bool cadastrar_usuario(Plataforma* plataforma);
 void logar(Plataforma* plataforma);
 void tela_usuario(Plataforma* plataforma, Usuario* usuario);
+bool postar_video(Canal* canal);
 void interface();
 
 
@@ -49,9 +50,11 @@ bool cadastrar_usuario(Plataforma* plataforma) {
   cout << "Verificado (s/n)? ";
   string verificado;
   cin >> verificado;
+
   cout << "Digite o nome do usuario: ";
   string nome;
   cin >> nome;
+
   cout << "Digite o nome do seu canal: ";
   string nomeDoCanal;
   cin >> nomeDoCanal;
@@ -61,6 +64,7 @@ bool cadastrar_usuario(Plataforma* plataforma) {
   else if (verificado == "n") usuario = new Usuario(nome, nomeDoCanal, 20);
   plataforma->adicionar(usuario);
 
+  cout << endl << endl;
   return true;
 }
 
@@ -89,10 +93,47 @@ void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
   if (usuarioVerificado != NULL) cout << "Usuario: " << usuario->getNome() << " (verificado)" << endl;
   else cout << "Usuario: " << usuario->getNome() << endl;
 
+  int opcao;
   cout << "Canal: " << usuario->getCanal()->getNome() << endl;
   cout << "Quantidade de conteudos no canal: " << usuario->getCanal()->getQuantidade() << endl;
+  cout << "------" << endl;
+  cout << "ESCOLHA UMA OPCAO:" << endl;
+  cout << "1) Postar video" << endl;
+  cout << "2) Criar lista" << endl;
+  cout << "3) Assistir video" << endl;
+  cout << "0) Deslogar" << endl;
+  cin >> opcao;
+
+  switch (opcao) {
+  case 1:
+    postar_video(usuario->getCanal());
+    break;
+  
+  default:
+    break;
+  }
 }
 
+bool postar_video(Canal* canal) {
+  string videoCurto;
+  cout << "Video curto (s/n)? ";
+  cin >> videoCurto;
+
+  string nomeDoVideo;
+  cout << "Nome do video: ";
+  cin >> nomeDoVideo;
+
+  int duracao;
+  cout << "Duracao: ";
+  cin >> duracao;
+
+  Video* video;
+  if (videoCurto == "s") video = new VideoCurto(nomeDoVideo, duracao);
+  else video = new Video(nomeDoVideo, duracao);
+
+  canal->postar(video);
+  return true;
+}
 //* COMENTE O MAIN AO SUBMETER
 int main() {
   interface();
