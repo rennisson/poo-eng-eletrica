@@ -18,6 +18,7 @@ void logar(Plataforma* plataforma);
 void tela_usuario(Plataforma* plataforma, Usuario* usuario);
 bool postar_video(Usuario* usuario);
 bool criar_lista(Canal* canal);
+Usuario* escolhe_usuario(Plataforma* plataforma);
 
 
 // IMPLEMENTE A FUNCAO TESTE
@@ -71,22 +72,9 @@ bool cadastrar_usuario(Plataforma* plataforma) {
 }
 
 void logar(Plataforma* plataforma) {
-  cout << "ESCOLHA UM USUARIO" << endl;
-  Usuario** usuarios = plataforma->getUsuarios();
-
-  for (int i = 0; i < plataforma->getQuantidadeDeUsuarios(); i++) {
-    // Bloco que verifica se o usuario é verificado ou não
-    UsuarioVerificado* usuarioVerificado = dynamic_cast<UsuarioVerificado*>(usuarios[i]);
-    if (usuarioVerificado != NULL) cout << i+1 << ") " << usuarios[i]->getNome() << " (verificado)" << endl;
-    else cout << i+1 << ") " << usuarios[i]->getNome() << endl;
-  }
-
-  int numeroUsuario;
-  cout << "Digite o numero, ou 0 para cancelar: ";
-  cin >> numeroUsuario;
-
-  if (numeroUsuario == 0) return;
-  tela_usuario(plataforma, usuarios[numeroUsuario-1]);
+  Usuario* usuario = escolhe_usuario(plataforma);
+  if (usuario == NULL) return;
+  tela_usuario(plataforma, usuario);
 }
 
 void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
@@ -108,12 +96,18 @@ void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
     cin >> opcao;
 
     switch (opcao) {
+    case 0:
+      return;
+
     case 1:
       postar_video(usuario);
       break;
     
     case 2:
       criar_lista(usuario->getCanal());
+      break;
+
+    case 3:
       break;
 
     default:
@@ -189,6 +183,25 @@ bool criar_lista(Canal* canal) {
   }
   canal->postar(lista);
   return true;
+}
+
+Usuario* escolhe_usuario(Plataforma* plataforma) {
+  cout << "ESCOLHA UM USUARIO" << endl;
+  Usuario** usuarios = plataforma->getUsuarios();
+
+  for (int i = 0; i < plataforma->getQuantidadeDeUsuarios(); i++) {
+    // Bloco que verifica se o usuario é verificado ou não
+    UsuarioVerificado* usuarioVerificado = dynamic_cast<UsuarioVerificado*>(usuarios[i]);
+    if (usuarioVerificado != NULL) cout << i+1 << ") " << usuarios[i]->getNome() << " (verificado)" << endl;
+    else cout << i+1 << ") " << usuarios[i]->getNome() << endl;
+  }
+
+  int numeroUsuario;
+  cout << "Digite o numero, ou 0 para cancelar: ";
+  cin >> numeroUsuario;
+  
+  if (numeroUsuario == 0) return NULL;
+  return usuarios[numeroUsuario-1];
 }
 
 //* COMENTE O MAIN AO SUBMETER
