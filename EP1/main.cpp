@@ -20,6 +20,7 @@ bool postar_video(Usuario* usuario);
 bool criar_lista(Canal* canal);
 Usuario* escolhe_usuario(Plataforma* plataforma);
 Conteudo* escolhe_conteudo(Canal* canal);
+bool assistir_video(Plataforma* plataforma);
 
 
 // IMPLEMENTE A FUNCAO TESTE
@@ -109,6 +110,7 @@ void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
       break;
 
     case 3:
+      assistir_video(plataforma);
       break;
 
     default:
@@ -150,21 +152,55 @@ bool criar_lista(Canal* canal) {
   cin >> nomeDaLista;
   Lista* lista = new Lista(nomeDaLista, 20);
 
-  int opcao = -1;
-  while (opcao != 0) {
+  while (true) {
     bool adicionou = false;
     Conteudo* conteudo = escolhe_conteudo(canal);
+    if (conteudo == NULL) break;
+
     Video* v = dynamic_cast<Video*>(conteudo);
-    
-    if (conteudo == NULL) return false;
     if (v != NULL) adicionou = lista->adicionar(v);
+    VideoCurto* vc = dynamic_cast<VideoCurto*>(conteudo);
+    if (vc != NULL) adicionou = lista->adicionar(vc);
     Lista* l = dynamic_cast<Lista*>(conteudo);
     if (l != NULL) adicionou = lista->adicionar(l);
 
     if (adicionou) cout << "Video adicionado a lista" << endl << endl;
     else cout << "Nao foi possivel adicionar" << endl << endl;
   }
-  canal->postar(lista);
+
+  if (lista->getQuantidade() == 0) return false;
+  bool postou = canal->postar(lista);
+  cout << endl;
+  return true;
+}
+
+bool assistir_video(Plataforma* plataforma) {
+  Usuario* usuario = escolhe_usuario(plataforma);
+
+  cout << "Canal: " << usuario->getCanal()->getNome() << endl;
+  Conteudo* conteudo = escolhe_conteudo(usuario->getCanal());
+
+  Lista* l = dynamic_cast<Lista*>(conteudo);
+  if (l != NULL) {
+    cout << "Nao foi possivel assistir" << endl;
+    return false;
+  }
+
+  VideoCurto* vc = dynamic_cast<VideoCurto*>(conteudo);
+  if (vc != NULL) {
+    vc->assistir();
+    return true;
+  }
+
+  Video* v = dynamic_cast<Video*>(conteudo);
+  if (v != NULL) {
+    int tempo;
+    cout << "Diga o tempo assistido: ";
+    cin >> tempo;
+    v->assistir(tempo);
+    return true;
+  }
+  
   return true;
 }
 
@@ -211,7 +247,8 @@ Usuario* escolhe_usuario(Plataforma* plataforma) {
   int numeroUsuario;
   cout << "Digite o numero, ou 0 para cancelar: ";
   cin >> numeroUsuario;
-  
+  cout << endl;
+
   if (numeroUsuario == 0) return NULL;
   return usuarios[numeroUsuario-1];
 }
