@@ -19,6 +19,7 @@ void tela_usuario(Plataforma* plataforma, Usuario* usuario);
 bool postar_video(Usuario* usuario);
 bool criar_lista(Canal* canal);
 Usuario* escolhe_usuario(Plataforma* plataforma);
+Conteudo* escolhe_conteudo(Canal* canal);
 
 
 // IMPLEMENTE A FUNCAO TESTE
@@ -148,15 +149,34 @@ bool criar_lista(Canal* canal) {
   cout << "Nome da lista: ";
   cin >> nomeDaLista;
   Lista* lista = new Lista(nomeDaLista, 20);
-  Conteudo** conteudos = canal->getConteudos();
 
   int opcao = -1;
   while (opcao != 0) {
-    cout << "ESCOLHA O CONTEUDO" << endl;
+    bool adicionou = false;
+    Conteudo* conteudo = escolhe_conteudo(canal);
+    Video* v = dynamic_cast<Video*>(conteudo);
+    
+    if (conteudo == NULL) return false;
+    if (v != NULL) adicionou = lista->adicionar(v);
+    Lista* l = dynamic_cast<Lista*>(conteudo);
+    if (l != NULL) adicionou = lista->adicionar(l);
+
+    if (adicionou) cout << "Video adicionado a lista" << endl << endl;
+    else cout << "Nao foi possivel adicionar" << endl << endl;
+  }
+  canal->postar(lista);
+  return true;
+}
+
+Conteudo* escolhe_conteudo(Canal* canal) {
+  Conteudo** conteudos = canal->getConteudos();
+  int opcao;
+  cout << "ESCOLHA O CONTEUDO" << endl;
     for (int i = 0; i < canal->getQuantidade(); i++) {
       Video* v = dynamic_cast<Video*>(conteudos[i]);
       VideoCurto* vc = dynamic_cast<VideoCurto*>(conteudos[i]);
       Lista* l = dynamic_cast<Lista*>(conteudos[i]);
+
       if (v != NULL) {
         cout << i+1 << ") ";
         v->imprimir();
@@ -172,17 +192,9 @@ bool criar_lista(Canal* canal) {
     }   
     cout << "Digite o numero, ou ZERO para terminar: ";
     cin >> opcao;
-    bool adicionou = false;
-    Video* v = dynamic_cast<Video*>(conteudos[opcao-1]);
-    if (v != NULL) adicionou = lista->adicionar(v);
-    Lista* l = dynamic_cast<Lista*>(conteudos[opcao-1]);
-    if (l != NULL) adicionou = lista->adicionar(l);
 
-    if (adicionou) cout << "Video adicionado a lista" << endl << endl;
-    else cout << "Nao foi possivel adicionar" << endl << endl;
-  }
-  canal->postar(lista);
-  return true;
+    if (opcao == 0) return NULL;
+    return conteudos[opcao-1];
 }
 
 Usuario* escolhe_usuario(Plataforma* plataforma) {
