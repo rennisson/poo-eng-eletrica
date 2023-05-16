@@ -159,8 +159,6 @@ bool criar_lista(Canal* canal) {
 
     Video* v = dynamic_cast<Video*>(conteudo);
     if (v != NULL) adicionou = lista->adicionar(v);
-    VideoCurto* vc = dynamic_cast<VideoCurto*>(conteudo);
-    if (vc != NULL) adicionou = lista->adicionar(vc);
     Lista* l = dynamic_cast<Lista*>(conteudo);
     if (l != NULL) adicionou = lista->adicionar(l);
 
