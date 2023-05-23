@@ -27,23 +27,28 @@ bool assistir_video(Plataforma* plataforma);
 void interface() {
 
   Plataforma* plataforma = new Plataforma();
-  int opcao = -1;
 
-  while (opcao != 0) {
+  while (true) {
     cout << "ESCOLHA UMA OPCAO" << endl;
     cout << "1) Cadastrar usuario" << endl;
     cout << "2) Logar" << endl;
     cout << "0) Sair da plataforma" << endl;
-
+    int opcao;
     cin >> opcao;
     cout << endl;
     switch (opcao) {
+    case 0:
+      delete plataforma;
+      break;
+
     case 1:
       cadastrar_usuario(plataforma);
       break;
+
     case 2:
       logar(plataforma);
       break;
+
     default:
       break;
     }
@@ -99,7 +104,6 @@ void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
 
     switch (opcao) {
     case 0:
-      delete plataforma;
       break;
 
     case 1:
@@ -171,7 +175,7 @@ bool criar_lista(Canal* canal) {
   }
 
   if (lista->getQuantidade() == 0) return false;
-  
+
   canal->postar(lista);
   cout << endl;
   return true;
