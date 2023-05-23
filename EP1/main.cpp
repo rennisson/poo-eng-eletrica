@@ -99,7 +99,8 @@ void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
 
     switch (opcao) {
     case 0:
-      return;
+      delete plataforma;
+      break;
 
     case 1:
       postar_video(usuario);
