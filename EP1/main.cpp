@@ -148,27 +148,31 @@ bool postar_video(Usuario* usuario) {
 }
 
 bool criar_lista(Canal* canal) {
+  cout << endl;
   string nomeDaLista;
   cout << "Nome da lista: ";
   cin >> nomeDaLista;
   Lista* lista = new Lista(nomeDaLista, 20);
+  cout << endl;
 
   while (true) {
     bool adicionou = false;
     Conteudo* conteudo = escolhe_conteudo(canal);
     if (conteudo == NULL) break;
 
+    // Cast dinamico para verificar qual classe exatamente o objeto pertence
     Video* v = dynamic_cast<Video*>(conteudo);
     if (v != NULL) adicionou = lista->adicionar(v);
     Lista* l = dynamic_cast<Lista*>(conteudo);
     if (l != NULL) adicionou = lista->adicionar(l);
 
-    if (adicionou) cout << "Video adicionado a lista" << endl << endl;
-    else cout << "Nao foi possivel adicionar" << endl << endl;
+    if (adicionou) cout << "Video adicionado a lista" << endl;
+    else cout << "Nao foi possivel adicionar" << endl;
   }
 
   if (lista->getQuantidade() == 0) return false;
-  bool postou = canal->postar(lista);
+  
+  canal->postar(lista);
   cout << endl;
   return true;
 }
