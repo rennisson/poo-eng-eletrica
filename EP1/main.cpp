@@ -29,13 +29,15 @@ void interface() {
   Plataforma* plataforma = new Plataforma();
 
   while (true) {
-    cout << "ESCOLHA UMA OPCAO" << endl;
+    cout << endl << "ESCOLHA UMA OPCAO" << endl;
     cout << "1) Cadastrar usuario" << endl;
     cout << "2) Logar" << endl;
     cout << "0) Sair da plataforma" << endl;
+
     int opcao;
     cin >> opcao;
     cout << endl;
+
     switch (opcao) {
     case 0:
       delete plataforma;
@@ -85,8 +87,7 @@ void logar(Plataforma* plataforma) {
 }
 
 void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
-  int opcao = -1;
-  while (opcao != 0) {
+  while (true) {
     // Verifica se 'usuario' é verificado ou não
     UsuarioVerificado* usuarioVerificado = dynamic_cast<UsuarioVerificado*>(usuario);
     if (usuarioVerificado != NULL) cout << "Usuario: " << usuario->getNome() << " (verificado)" << endl;
@@ -100,6 +101,8 @@ void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
     cout << "2) Criar lista" << endl;
     cout << "3) Assistir video" << endl;
     cout << "0) Deslogar" << endl;
+
+    int opcao;
     cin >> opcao;
 
     switch (opcao) {
