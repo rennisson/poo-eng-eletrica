@@ -1,4 +1,4 @@
-#include "PLataforma.h"
+#include "Plataforma.h"
 #include "Usuario.h"
 #include <iostream>
 
