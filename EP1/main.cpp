@@ -90,8 +90,8 @@ void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
   while (true) {
     // Verifica se 'usuario' é verificado ou não
     UsuarioVerificado* usuarioVerificado = dynamic_cast<UsuarioVerificado*>(usuario);
-    if (usuarioVerificado != NULL) cout << "Usuario: " << usuario->getNome() << " (verificado)" << endl;
-    else cout << "Usuario: " << usuario->getNome() << endl;
+    if (usuarioVerificado != NULL) cout << endl << "Usuario: " << usuario->getNome() << " (verificado)" << endl;
+    else cout << endl << "Usuario: " << usuario->getNome() << endl;
 
     cout << "Canal: " << usuario->getCanal()->getNome() << endl;
     cout << "Quantidade de conteudos no canal: " << usuario->getCanal()->getQuantidade() << endl;
@@ -107,6 +107,7 @@ void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
 
     switch (opcao) {
     case 0:
+      return;
       break;
 
     case 1:
