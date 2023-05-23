@@ -76,7 +76,6 @@ bool cadastrar_usuario(Plataforma* plataforma) {
   else if (verificado == "n") usuario = new Usuario(nome, nomeDoCanal, 20);
   plataforma->adicionar(usuario);
 
-  cout << endl << endl;
   return true;
 }
 
@@ -234,7 +233,7 @@ Conteudo* escolhe_conteudo(Canal* canal) {
       }
       else if (l != NULL) {
         cout << i+1 << ") ";
-        l->imprimir();
+        cout << "Lista: " << l->getNome() << " - " << l->getDuracao() << " min - " << l->getVisualizacoes() << " visualizacoes" << endl;
       }
     }   
     cout << "Digite o numero, ou ZERO para terminar: ";
