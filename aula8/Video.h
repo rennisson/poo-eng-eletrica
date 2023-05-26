@@ -6,7 +6,7 @@
 using namespace std;
 
 class Video : public Conteudo {
-private:
+protected:
   int visualizacoes;
 public:
   Video(string nome, int duracao);

@@ -252,8 +252,8 @@ Usuario* escolhe_usuario(Plataforma* plataforma) {
 }
 
 //* COMENTE O MAIN AO SUBMETER
-int main() {
-  interface();
-  return 0;
-}
+// int main() {
+//   interface();
+//   return 0;
+// }
 //*/

@@ -93,5 +93,10 @@ bool Canal::postar(Conteudo* c) {
 
 void Canal::imprimir() {
     cout << "Canal: " << nome << " - " << getDuracaoTotal() << " minutos totais" << endl;
-    cout << "\t" << quantidade << " elementos postados" << endl << endl;
+    cout << "\t" << quantidade << " elementos postados" << endl;
+
+    for (int i = 0; i < quantidade; i++) {
+      cout << endl;
+      conteudos[i]->imprimir();
+    }
 }
