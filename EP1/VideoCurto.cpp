@@ -12,6 +12,10 @@ void VideoCurto::assistir() {
     visualizacoes++;
 }
 
+void VideoCurto::assistir(int tempo) {
+    visualizacoes++;
+}
+
 void VideoCurto::imprimir() {
     cout << "Video curto: " << this->getNome() << " - " << visualizacoes << " visualizacoes" << endl;
 }
