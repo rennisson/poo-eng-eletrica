@@ -11,7 +11,7 @@ Video::Video(string nome, int duracao) : Conteudo(nome, duracao) {
 
 // Destrutor
 Video::~Video() {
-  cout << "Destrutor de video com " << visualizacoes << " visualizacoes: " << this->getNome() << endl; 
+  cout << "Destrutor de video com " << visualizacoes << " visualizacoes: " << getNome() << endl; 
 }
 
 /**
@@ -19,13 +19,13 @@ Video::~Video() {
  * @param tempo tempo de video assistido
 */
 void Video::assistir(int tempo) {
-  if (tempo >= (double) this->duracao * 0.3) this->visualizacoes++;
+  if (tempo >= (double) duracao * 0.3) visualizacoes++;
 }
 
 /**
  * Imprime as informações do objeto
 */
 void Video::imprimir() {
-  cout << "Video: " << this->getNome() << " - " << this->getDuracao() << " min - "
+  cout << "Video: " << getNome() << " - " << getDuracao() << " min - "
         << visualizacoes << " visualizacoes" << endl;
 }

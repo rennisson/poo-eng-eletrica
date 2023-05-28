@@ -56,19 +56,19 @@ bool Lista::adicionar(Video* v) {
 bool Lista::adicionar (Lista* l) {
     // Conta quantos videos repetidos há na lista 'l'
     int videosRepetidos = 0;
-    for (int i = 0; i < this->quantidade; i++) {
+    for (int i = 0; i < quantidade; i++) {
         for (int j = 0; j < l->getQuantidade(); j++) {
-            if (this->videos[i] == l->videos[j]) videosRepetidos++;
+            if (videos[i] == l->videos[j]) videosRepetidos++;
         }
     }
 
     // Verifica se há espaco suficiente para TODOS os videos nao repetidos
     int videosNaoRepetidos = l->quantidade - videosRepetidos;
-    if (this->quantidade + videosNaoRepetidos > this->tamanho) return false;
+    if (quantidade + videosNaoRepetidos > tamanho) return false;
 
     // Adiciona todos os videos nao repetidos na lista
     for (int i = 0; i < l->quantidade; i++) {
-        this->adicionar(l->videos[i]);
+        adicionar(l->videos[i]);
     }
 
     return true;

@@ -29,16 +29,15 @@ Canal::~Canal() {
   }
 
   delete conteudos;
-
   cout << "Canal destruido" << endl;
 }
 
 string Canal::getNome() {
-  return this->nome;
+  return nome;
 }
 
 int Canal::getQuantidade() {
-  return this->quantidade;
+  return quantidade;
 }
 
 /**
@@ -66,8 +65,8 @@ int Canal::getDuracaoTotal() {
 */
 int Canal::getTotalDeVisualizacoes() {
   int soma = 0;
-  for (int i = 0; i < this->quantidade; i++) {
-    soma += this->conteudos[i]->getVisualizacoes();
+  for (int i = 0; i < quantidade; i++) {
+    soma += conteudos[i]->getVisualizacoes();
   }
   return soma;
 }
@@ -85,7 +84,7 @@ bool Canal::postar(Conteudo* c) {
     if (c == conteudos[i]) return false;
   }
 
-  conteudos[this->quantidade] = c;
+  conteudos[quantidade] = c;
   quantidade++;
 
   return true;

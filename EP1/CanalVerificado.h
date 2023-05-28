@@ -5,9 +5,6 @@
 #include <string>
 
 class CanalVerificado : public Canal {
-private:
-    string nome;
-    int maximo;
 public:
     CanalVerificado(string nome, int maximo);
     virtual ~CanalVerificado();

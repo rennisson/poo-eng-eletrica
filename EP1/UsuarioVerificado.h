@@ -4,8 +4,6 @@
 #include <string>
 
 class UsuarioVerificado : public Usuario {
-private:
-    
 public:
     UsuarioVerificado(string nome, string nomeDoCanal, int maximo);
     virtual ~UsuarioVerificado();

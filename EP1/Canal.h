@@ -6,9 +6,9 @@
 
 class Canal {
 private:
-
-protected:
   string nome;
+  
+protected:
   int maximo;
   Conteudo **conteudos;
   int quantidade;

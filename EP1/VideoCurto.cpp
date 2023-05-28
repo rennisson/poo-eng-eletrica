@@ -5,7 +5,7 @@ using namespace std;
 VideoCurto::VideoCurto(string nome, int duracao): Video (nome, duracao) {}
 
 VideoCurto::~VideoCurto() {
-    cout << "Destrutor de video com " << visualizacoes << " visualizacoes: " << this->getNome() << endl; 
+    cout << "Destrutor de video com " << visualizacoes << " visualizacoes: " << getNome() << endl; 
 }
 
 void VideoCurto::assistir() {
@@ -17,5 +17,5 @@ void VideoCurto::assistir(int tempo) {
 }
 
 void VideoCurto::imprimir() {
-    cout << "Video curto: " << this->getNome() << " - " << visualizacoes << " visualizacoes" << endl;
+    cout << "Video curto: " << getNome() << " - " << visualizacoes << " visualizacoes" << endl;
 }
