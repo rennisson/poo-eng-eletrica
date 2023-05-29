@@ -3,6 +3,9 @@
 #include <string>
 using namespace std;
 
+/**
+ * Representa um conteúdo que é postado em Canal. 
+*/
 class Conteudo {
     private:
         string nome;
