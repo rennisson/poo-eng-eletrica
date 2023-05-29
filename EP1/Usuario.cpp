@@ -18,10 +18,16 @@ Usuario::~Usuario() {
     delete canal;
 };
 
+/**
+ * Retorna o canal do usuario
+*/
 Canal* Usuario::getCanal() {
     return canal;
 }
 
+/**
+ * Retorna o nome do usuario
+*/
 string Usuario::getNome() {
     return nome;
 }

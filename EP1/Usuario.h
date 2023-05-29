@@ -3,16 +3,19 @@
 #include "Canal.h"
 #include <string>
 
+/**
+ * Representa uma pessoa em Plataforma.
+*/
 class Usuario {
-protected:
-    string nome;
-    Canal* canal;
-public:
-    Usuario(string nome, string nomeDoCanal, int maximo);
-    Usuario(string nome, Canal* canal);
-    virtual ~Usuario();
-    virtual Canal* getCanal();
-    virtual string getNome();
+    protected:
+        string nome;
+        Canal* canal;
+    public:
+        Usuario(string nome, string nomeDoCanal, int maximo);
+        Usuario(string nome, Canal* canal);
+        virtual ~Usuario();
+        virtual Canal* getCanal();
+        virtual string getNome();
 };
 
 #endif
