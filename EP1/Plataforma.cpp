@@ -14,7 +14,11 @@ Plataforma::~Plataforma() {
     cout << "Plataforma deletada" << endl;
 }
 
-bool Plataforma::adicionar (Usuario* usuario) {
+/**
+ * Adiciona um usuario na plataforma.
+ * @return True caso tenha adicionado o usuario no vetor de usuarios. False, caso o vetor de usuarios esteja cheio ou o usuario já exista.
+*/
+bool Plataforma::adicionar(Usuario* usuario) {
     if (quantidadeDeUsuarios >= maximoDeUsuarios) return false;
 
     for (int i = 0; i <= quantidadeDeUsuarios; i++) {
@@ -26,10 +30,16 @@ bool Plataforma::adicionar (Usuario* usuario) {
     return true;
 }
 
+/**
+ * Retorna a quantidade de usuarios da plataforma
+*/
 int Plataforma::getQuantidadeDeUsuarios() {
     return quantidadeDeUsuarios;
 }
 
+/**
+ * Retorna o vetor de usuarios da plataforma
+*/
 Usuario** Plataforma::getUsuarios() {
     return usuarios;
 }
