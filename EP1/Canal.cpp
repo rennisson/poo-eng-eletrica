@@ -32,10 +32,16 @@ Canal::~Canal() {
   cout << "Canal destruido" << endl;
 }
 
+/**
+ * Retorna o nome do canal
+*/
 string Canal::getNome() {
   return nome;
 }
 
+/**
+ * Retorna a quantidade de conteudos do canal
+*/
 int Canal::getQuantidade() {
   return quantidade;
 }
@@ -71,6 +77,12 @@ int Canal::getTotalDeVisualizacoes() {
   return soma;
 }
 
+/**
+ * Posta um conteudo em Canal.
+ * @return True caso seja possível adicionar o Conteudo no vetor de conteudos.
+ * False, caso o Conteudo seja um vídeo curto, caso sua duração seja zero, caso o vetor de conteúdos já esteja cheio e
+ * caso este já tenha sido postado anteriormente. 
+*/
 bool Canal::postar(Conteudo* c) {
   // Verifica se o Conteudo 'c' é VideoCurto
   VideoCurto* vc = dynamic_cast<VideoCurto*>(c);
@@ -90,6 +102,9 @@ bool Canal::postar(Conteudo* c) {
   return true;
 }
 
+/**
+ * Imprime as informações do objeto
+*/
 void Canal::imprimir() {
     cout << "Canal: " << nome << " - " << getDuracaoTotal() << " minutos totais" << endl;
     cout << "\t" << quantidade << " elementos postados" << endl << endl;
