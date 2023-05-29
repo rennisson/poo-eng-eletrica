@@ -217,7 +217,7 @@ bool assistir_video(Plataforma* plataforma) {
 Conteudo* escolhe_conteudo(Canal* canal) {
   Conteudo** conteudos = canal->getConteudos();
   int opcao;
-  cout << "ESCOLHA O CONTEUDO" << endl;
+  cout << endl << "ESCOLHA O CONTEUDO" << endl;
     for (int i = 0; i < canal->getQuantidade(); i++) {
       Video* v = dynamic_cast<Video*>(conteudos[i]);
       VideoCurto* vc = dynamic_cast<VideoCurto*>(conteudos[i]);
@@ -233,7 +233,7 @@ Conteudo* escolhe_conteudo(Canal* canal) {
       }
       else if (l != NULL) {
         cout << i+1 << ") ";
-        cout << "Lista: " << l->getNome() << " - " << l->getDuracao() << " min - " << l->getVisualizacoes() << " visualizacoes" << endl;
+        cout << "Lista: " << l->getNome() << " - " << l->getQuantidade() << " video" << endl;
       }
     }   
     cout << "Digite o numero, ou ZERO para terminar: ";
@@ -244,7 +244,7 @@ Conteudo* escolhe_conteudo(Canal* canal) {
 }
 
 Usuario* escolhe_usuario(Plataforma* plataforma) {
-  cout << "ESCOLHA UM USUARIO" << endl;
+  cout << endl << "ESCOLHA UM USUARIO" << endl;
   Usuario** usuarios = plataforma->getUsuarios();
 
   for (int i = 0; i < plataforma->getQuantidadeDeUsuarios(); i++) {

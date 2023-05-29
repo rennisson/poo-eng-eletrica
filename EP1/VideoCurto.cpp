@@ -4,9 +4,7 @@ using namespace std;
 
 VideoCurto::VideoCurto(string nome, int duracao): Video (nome, duracao) {}
 
-VideoCurto::~VideoCurto() {
-    cout << "Destrutor de video com " << visualizacoes << " visualizacoes: " << getNome() << endl; 
-}
+VideoCurto::~VideoCurto() {}
 
 /**
  * Incrementa 1 em 'visualizacoes' não importa o tempo assistido

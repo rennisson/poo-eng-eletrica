@@ -9,7 +9,7 @@
 class VideoCurto: public Video {
     public:
         VideoCurto(string nome, int duracao);
-        virtual ~VideoCurto();
+        ~VideoCurto();
         virtual void assistir();
         virtual void assistir(int tempo);
         virtual void imprimir();

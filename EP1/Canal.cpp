@@ -24,12 +24,10 @@ Canal::Canal(string nome, Conteudo** conteudos, int quantidade) {
 Canal::~Canal() {
   cout << "Destruidor de canal: " << nome << " - " << quantidade << " conteudos" << endl;
 
-  for (int i = 0; i < quantidade; i++) {
-    delete conteudos[i];
-  }
+  for (int i = 0; i < quantidade; i++) delete conteudos[i];
 
   delete conteudos;
-  cout << "Canal destruido" << endl;
+  cout << "Canal destruido" << endl << endl;
 }
 
 /**
