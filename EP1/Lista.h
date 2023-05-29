@@ -3,6 +3,9 @@
 #include "Video.h"
 #include "Conteudo.h"
 
+/**
+ * É um tipo de Conteudo que comporta videos.
+*/
 class Lista : public Conteudo {
     private:
         int tamanho;

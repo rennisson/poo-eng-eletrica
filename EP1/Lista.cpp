@@ -13,14 +13,23 @@ Lista::~Lista() {
     delete videos;
 }
 
+/**
+ * Retorna um vetor de videos
+*/
 Video** Lista::getVideos() {
     return videos;
 }
 
+/*
+* Retorna a quantidade de conteudos da lista
+*/
 int Lista::getQuantidade() {
     return quantidade;
 }
 
+/*
+* Retorna a quantidade de visualizacoes dos conteudos da lista
+*/
 int Lista::getVisualizacoes() {
     int totalVisualizacoes = 0;
     for (int i = 0; i < quantidade; i++) {
@@ -30,6 +39,11 @@ int Lista::getVisualizacoes() {
     return totalVisualizacoes;
 }
 
+/**
+* Adiciona um video novo à lista.
+* @return True se foi possivel adicionar o video na lista. False, caso o vetor 'videos' esteja cheio,
+    o video já está na lista ou o video tem duracao zero
+*/
 bool Lista::adicionar(Video* v) {
     if (v->getDuracao() == 0) return false;
     if (quantidade >= tamanho) return false; // verifica se o vetor ja está cheio
@@ -53,6 +67,11 @@ bool Lista::adicionar(Video* v) {
     return true;
 }
 
+/**
+* Adiciona uma lista de videos à lista.
+* @return True se foi possivel adicionar todos os videos da lista. False, caso o vetor 'videos' esteja cheio ou
+*   algum dos videos já está na lista
+*/
 bool Lista::adicionar (Lista* l) {
     // Conta quantos videos repetidos há na lista 'l'
     int videosRepetidos = 0;
@@ -74,6 +93,9 @@ bool Lista::adicionar (Lista* l) {
     return true;
 }
 
+/**
+ * Imprime as informações do objeto
+*/
 void Lista::imprimir() {
     cout << "Lista com " << quantidade << " videos: " << getNome() << " - " << duracao << " minutos" << endl;
     for (int i = 0; i < quantidade; i++) {
