@@ -15,7 +15,6 @@ public:
   virtual void assistir(int tempo);
   virtual int getVisualizacoes();    
   virtual void imprimir();
-
   static void setPorcentagem(double valor);
   static double getPorcentagem();
 };
