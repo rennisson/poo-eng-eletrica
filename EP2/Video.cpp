@@ -26,7 +26,7 @@ int Video::getVisualizacoes() {
 }
 
 /**
- * Incrementa 1 no atributo 'visualizacoes' se 'tempo' é maior que 30% de 'duracao'
+ * Incrementa 1 no atributo 'visualizacoes' se 'tempo' é maior que 'porcentagem' de 'duracao'
  * @param tempo tempo de video assistido
 */
 void Video::assistir(int tempo) {

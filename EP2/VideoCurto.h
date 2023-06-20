@@ -8,10 +8,9 @@ public:
     VideoCurto(string nome, int duracao);
     VideoCurto(string nome, int duracao, int visualizacoes);
     virtual ~VideoCurto();
-    virtual void assistir();
+    void assistir();
+    virtual void assistir(int tempo);
     virtual void imprimir();
-private:
-
 };
 
 #endif
