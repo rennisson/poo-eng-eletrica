@@ -53,15 +53,15 @@ vector<Conteudo*>* Canal::getConteudos() {
 */
 int Canal::getDuracaoTotal() {
   int soma = 0;
-  try {
-    vector <Conteudo*>::iterator c = conteudos->begin();
-    while(c != conteudos->end()) {
-      soma += (*c)->getDuracao();
+  for (Conteudo *c : *conteudos) {
+    try {
+      soma += c->getDuracao();
     }
+    catch (logic_error *e) {
+      delete e;
+    };    
   }
-  catch (logic_error *e) {
-    delete e;
-  };
+  
   
   return soma;
 }
@@ -92,10 +92,10 @@ void Canal::postar(Conteudo* c) {
 }
 
 void Canal::imprimir() {
-    cout << "Canal: " << nome << " - " << getDuracaoTotal() << " minutos totais" << endl;
-    cout << "\t" << conteudos->size() << " elementos postados" << endl;
-    vector<Conteudo*>::iterator c = conteudos->begin();
-    while (c != conteudos->end()) {
-      (*c)->imprimir();
+    cout << endl << "Canal: " << nome << " - " << getDuracaoTotal() << " minutos totais" << endl;
+    cout << "\t" << conteudos->size() << " elementos postados" << endl << endl;
+    
+    for (Conteudo *c : *conteudos) {
+      c->imprimir();
     }
 }

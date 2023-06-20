@@ -15,35 +15,40 @@ using namespace std;
 
 // IMPLEMENTE A FUNCAO TESTE
 void teste () {
-  // Video *v1 = new Video("Heather", 25);
-  // for (int i = 0; i < 7; i++) v1->assistir(24);
+  CanalVerificado* c = new CanalVerificado("dodie");
+  Video* v1 = new Video("Monster", 118, 8);
+  Video* v2 = new Video("Human", 23, 6);
+  VideoCurto* vc = new VideoCurto("Boys like you", 4, 5);
+  Lista* l = new Lista("Build a problem");
 
-  // Video *v2 = new Video("Memories", 29);
-  // for (int i = 0; i < 3; i++) v2->assistir(28);
+  c->postar(v1);
+  c->postar(v2);
+  c->postar(vc);
+  c->postar(l);
 
-  // VideoCurto *vc = new VideoCurto("Lookalike", 5);
-  // for (int i = 0; i < 10; i++) vc->assistir();
+  c->imprimir();
+  delete c;
 
-  // Video *v3 = new Video("Telepath", 42);
-  // for (int i = 0; i < 5; i++) v3->assistir(41); 
-
-  // PersistenciaConteudo *p = new PersistenciaConteudo("teste.txt");
-  // p->inserir(v1);
-  // p->inserir(v2);
-  // p->inserir(vc);
-  // p->inserir(v3);
-
+  // Lista* l1 = new Lista("Freckle season");
+  // Lista* l2 = new Lista("Singles");
+  // Video* v1 = new Video("Pretending", 208, 0);
+  // VideoCurto* vc = new VideoCurto("Heavy", 3, 14);
+  // Video* v2 = new Video("Figure it out", 54, 3);
+  // Video* v3 = new Video("Flatline", 85, 7);
+  // l2->adicionar(v1);
+  // l2->adicionar(v3);
+  // l1->adicionar(vc);
+  // l1->adicionar(v2);
+  // l2->adicionar(l1);
+  // l1->adicionar(l2);
+  // l1->imprimir();
+  // l2->imprimir();
+  // delete l1;
+  // delete l2;
   // delete v1;
   // delete v2;
   // delete vc;
   // delete v3;
-
-  PersistenciaConteudo *p = new PersistenciaConteudo("teste.txt");
-  int quantidade = 10;
-  Conteudo** conteudos = p->obter(quantidade);
-  Canal *c = new Canal("Conan Gray", conteudos, quantidade);
-  c->imprimir();
-  delete c;
 }
 
 //* COMENTE O MAIN AO SUBMETER

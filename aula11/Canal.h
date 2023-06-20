@@ -10,7 +10,6 @@ private:
 
 protected:
   string nome;
-  int maximo;
   vector<Conteudo*>* conteudos;
 
 public:

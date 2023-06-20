@@ -8,7 +8,7 @@ protected:
     string nome;
     Canal* canal;
 public:
-    Usuario(string nome, string nomeDoCanal, int maximo);
+    Usuario(string nome, string nomeDoCanal);
     Usuario(string nome, Canal* canal);
     virtual ~Usuario();
     virtual Canal* getCanal();

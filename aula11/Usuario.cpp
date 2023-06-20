@@ -3,9 +3,9 @@
 #include <string>
 #include <iostream>
 
-Usuario::Usuario(string nome, string nomeDoCanal, int maximo) {
+Usuario::Usuario(string nome, string nomeDoCanal) {
     this->nome = nome;
-    this->canal = new Canal(nomeDoCanal, maximo);
+    this->canal = new Canal(nomeDoCanal);
 };
 
 Usuario::Usuario(string nome, Canal* canal) {

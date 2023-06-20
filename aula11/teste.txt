@@ -1,4 +1,0 @@
-v Heather 25 7
-v Memories 29 3
-s Lookalike 5 10
-v Telepath 42 5
