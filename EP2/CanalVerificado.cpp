@@ -5,6 +5,8 @@
 
 CanalVerificado::CanalVerificado(string nome) : Canal(nome) {}
 
+CanalVerificado::CanalVerificado(string nome, vector<Conteudo*>* conteudos) : Canal(nome, conteudos) {}
+
 CanalVerificado::~CanalVerificado() {}
 
 void CanalVerificado::postar(Conteudo* c) {
