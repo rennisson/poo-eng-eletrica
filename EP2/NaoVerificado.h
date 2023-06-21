@@ -5,9 +5,10 @@
 
 using namespace std;
 
-class NaoVerificado : public runtime_error {
+class NaoVerificado : public logic_error {
     public:
         NaoVerificado();
+        ~NaoVerificado();
 };
 
 #endif
