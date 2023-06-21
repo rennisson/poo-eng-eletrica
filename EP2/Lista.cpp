@@ -6,7 +6,6 @@
 #include <algorithm>
 
 Lista::Lista(string nome) : Conteudo(nome, 0) {
-    this->quantidade = 0;
     this->videos = new list<Video*>();
 };
 
@@ -19,10 +18,6 @@ list<Video*>* Lista::getVideos() {
     return videos;
 }
 
-int Lista::getQuantidade() {
-    return quantidade;
-}
-
 int Lista::getVisualizacoes() {
     int totalVisualizacoes = 0;
     for (Video* v : *videos) {
@@ -33,19 +28,19 @@ int Lista::getVisualizacoes() {
 }
 
 int Lista::getDuracao() {
-    if (quantidade == 0) throw new logic_error("Lista vazia");
+    if (videos->empty()) throw new logic_error("Lista vazia");
     return duracao;
 }
 
-bool Lista::adicionar(Video* v) {
-    if (v->getDuracao() == 0) return false;
+void Lista::adicionar(Video* v) {
+    if (v->getDuracao() == 0) return;
 
     // Verifica se o video já está na lista
     list<Video*>::iterator repetido = find(videos->begin(), videos->end(), v);
-    if (repetido != videos->end()) return false;
+    if (repetido != videos->end()) throw new invalid_argument("Video ja adicionado");
 
+    // Se não é repetido, adiciona o video na lista
     videos->insert(videos->end(), v);
-    quantidade++;
 
     // Bloco que atualiza a duracao total da lista
     int soma = 0;
@@ -53,8 +48,6 @@ bool Lista::adicionar(Video* v) {
         soma += v->getDuracao();
     }
     duracao = soma;
-
-    return true;
 }
 
 void Lista::adicionar (Lista* l) {
@@ -67,12 +60,6 @@ void Lista::adicionar (Lista* l) {
 }
 
 void Lista::imprimir() {
-    cout << "Lista com " << quantidade << " videos: " << getNome() << " - " << duracao << " minutos" << endl;
+    cout << "Lista com " << videos->size() << " videos: " << getNome() << " - " << duracao << " minutos" << endl;
     list<Video*>::iterator vid = videos->begin();
-
-    int i = 0;
-    for (Video* vid : *videos) {
-        i++;
-        cout << "\t" << i << ". " << (vid)->getNome() << endl << endl;
-    }
 }
