@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include "Conteudo.h"
+#include "Lista.h"
 #include "Video.h"
 
 class Canal {
@@ -22,6 +23,7 @@ public:
   virtual int getDuracaoTotal();
   virtual int getTotalDeVisualizacoes();
   virtual vector<Conteudo*>* getConteudos();
+  Lista* criarListaComVideosMaisVistos(int quantidade, string nome);
   virtual void postar(Conteudo* c);
   virtual void imprimir();
 };

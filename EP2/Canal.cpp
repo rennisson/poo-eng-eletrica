@@ -32,7 +32,6 @@ Canal::~Canal() {
   }
 
   delete conteudos;
-
   cout << "Canal destruido" << endl;
 }
 
@@ -62,7 +61,6 @@ int Canal::getDuracaoTotal() {
     };    
   }
   
-  
   return soma;
 }
 
@@ -88,7 +86,12 @@ void Canal::postar(Conteudo* c) {
   vector<Conteudo*>::iterator repetido = find(conteudos->begin(), conteudos->end(), c);
   if (repetido != conteudos->end()) throw new invalid_argument("Conteudo repetido");
 
+  // Se não é repetido, adiciona conteudo em 'conteudos'
   conteudos->insert(conteudos->end(), c);
+}
+
+Lista* Canal::criarListaComVideosMaisVistos(int quantidade, string nome) {
+
 }
 
 void Canal::imprimir() {
