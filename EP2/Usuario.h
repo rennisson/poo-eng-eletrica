@@ -11,8 +11,8 @@ public:
     Usuario(string nome, string nomeDoCanal);
     Usuario(string nome, Canal* canal);
     virtual ~Usuario();
-    Canal* getCanal();
-    string getNome();
+    virtual Canal* getCanal();
+    virtual string getNome();
 };
 
 #endif
