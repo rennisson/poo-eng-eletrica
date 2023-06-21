@@ -1,17 +1,17 @@
 #ifndef PLATAFORMA_H
 #define PLATAFORMA_H
 #include "Usuario.h"
+#include <vector>
 
 class Plataforma {
 private:
-    Usuario** usuarios;
-    int quantidadeDeUsuarios;
+    vector<Usuario*>* usuarios;
 public:
     Plataforma();
-    virtual ~Plataforma();
-    virtual bool adicionar (Usuario* usuario);
-    virtual int getQuantidadeDeUsuarios();
-    virtual Usuario** getUsuarios();
+    ~Plataforma();
+    void adicionar (Usuario* usuario);
+    int getQuantidadeDeUsuarios();
+    vector<Usuario*>* getUsuarios();
     const int maximoDeUsuarios = 20;
 };
 

@@ -1,35 +1,32 @@
 #include "Plataforma.h"
 #include "Usuario.h"
 #include <iostream>
+#include <algorithm>
 
 Plataforma::Plataforma() {
-    quantidadeDeUsuarios = 0;
-    usuarios = new Usuario*[maximoDeUsuarios];
+    usuarios = new vector<Usuario*>();
 }
 
 Plataforma::~Plataforma() {
     cout << "Destrutor de Plataforma" << endl;
-    for (int i = 0; i < maximoDeUsuarios; i++) delete usuarios[i];
+    for (Usuario* c : *usuarios) delete c;
     delete usuarios;
     cout << "Plataforma deletada" << endl;
 }
 
-bool Plataforma::adicionar (Usuario* usuario) {
-    if (quantidadeDeUsuarios >= maximoDeUsuarios) return false;
+void Plataforma::adicionar (Usuario* usuario) {
+    // Verifica se o video já está na lista
+    vector<Usuario*>::iterator repetido = find(usuarios->begin(), usuarios->end(), usuario);
+    if (repetido != usuarios->end()) throw new invalid_argument("Usuario ja adicionado");
 
-    for (int i = 0; i <= quantidadeDeUsuarios; i++) {
-        if (usuario == usuarios[i]) return false;
-    }
-
-    usuarios[quantidadeDeUsuarios] = usuario;
-    quantidadeDeUsuarios++;
-    return true;
+    // Se não é repetido, o usuario é adiciona em 'usuarios'
+    usuarios->insert(usuarios->end(), usuario);
 }
 
 int Plataforma::getQuantidadeDeUsuarios() {
-    return quantidadeDeUsuarios;
+    return usuarios->size();
 }
 
-Usuario** Plataforma::getUsuarios() {
+vector<Usuario*>* Plataforma::getUsuarios() {
     return usuarios;
 }
