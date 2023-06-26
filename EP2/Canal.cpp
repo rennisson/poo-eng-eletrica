@@ -90,14 +90,18 @@ void Canal::postar(Conteudo* c) {
   conteudos->insert(conteudos->end(), c);
 }
 
-int Canal::getQuantidadeDeVideos() {
-  int quantidade = 0;
+vector<Video*>* Canal::getVideos() {
+  quantidadeDeVideos = 0;
+  vector<Video*>* videos = new vector<Video*>();
   for (Conteudo* c : *conteudos) {
     Video* v = dynamic_cast<Video*>(c);
-    if (v != NULL) quantidade++;
+    if (v != NULL) {
+      videos->push_back(v);
+      quantidadeDeVideos++;
+    }
   }
 
-  return quantidade;
+  return videos;
 }
 
 Lista* Canal::criarListaComVideosMaisVistos(int quantidade, string nome) {

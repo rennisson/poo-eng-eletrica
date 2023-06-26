@@ -8,10 +8,12 @@
 
 class Canal {
 private:
+  vector<Video*>* getVideos();
 
 protected:
   string nome;
   vector<Conteudo*>* conteudos;
+  int quantidadeDeVideos;
 
 public:
   // Construtor
@@ -26,7 +28,6 @@ public:
   Lista* criarListaComVideosMaisVistos(int quantidade, string nome);
   virtual void postar(Conteudo* c);
   virtual void imprimir();
-  int getQuantidadeDeVideos();
 };
 
 #endif // CANAL_H
