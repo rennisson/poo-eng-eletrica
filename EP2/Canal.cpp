@@ -90,6 +90,16 @@ void Canal::postar(Conteudo* c) {
   conteudos->insert(conteudos->end(), c);
 }
 
+int Canal::getQuantidadeDeVideos() {
+  int quantidade = 0;
+  for (Conteudo* c : *conteudos) {
+    Video* v = dynamic_cast<Video*>(c);
+    if (v != NULL) quantidade++;
+  }
+
+  return quantidade;
+}
+
 Lista* Canal::criarListaComVideosMaisVistos(int quantidade, string nome) {
 
 }
