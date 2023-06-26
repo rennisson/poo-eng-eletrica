@@ -91,7 +91,23 @@ void Canal::postar(Conteudo* c) {
 }
 
 Lista* Canal::criarListaComVideosMaisVistos(int quantidade, string nome) {
+  if (quantidade > conteudos->size()) throw new invalid_argument("Nao foi possivel criar a lista");
+  
+  vector<Conteudo*>* conteudosOrdenados = conteudos;
+  vector<int> intei;
+  sort(conteudosOrdenados->begin(), conteudosOrdenados->end(), compararVisualizacoes);
+  //reverse(conteudosOrdenados->begin(), conteudosOrdenados->end());
+  Lista* maisVistos = new Lista(nome);
+  
+  for (int i = 0; i < quantidade; i++) {
+    Video* v = dynamic_cast<Video*>(conteudosOrdenados->back());
+    if (v != NULL) maisVistos->adicionar(v);
+  }
+  return maisVistos;
+}
 
+bool compararVisualizacoes(Conteudo* i, Conteudo* j) {
+  return i->getVisualizacoes() > i->getVisualizacoes();
 }
 
 void Canal::imprimir() {

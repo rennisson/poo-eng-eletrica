@@ -10,13 +10,11 @@ class Lista : public Conteudo {
     public:
         Lista(string nome);
         virtual ~Lista();
-        void adicionar (Video* v);
+        void adicionar(Video* v);
         void adicionar(Lista* l);
         void imprimir();
         list<Video*>* getVideos();
         int getVisualizacoes();
-        //virtual bool adicionar(Video* v);
-        virtual void adicionar(Lista* l); 
         virtual list<Video*>* getVideos();
         virtual int getQuantidade();
         virtual int getVisualizacoes();
