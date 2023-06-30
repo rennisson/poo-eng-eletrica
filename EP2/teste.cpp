@@ -60,7 +60,7 @@ void teste () {
   }
 }
 
-bool cadastrar_usuario(Plataforma* plataforma) {
+bool cadastrar_usuario(Plataforma* plataforma) { // OK
   std::cout << "INFORME OS DADOS DO USUARIO:" << endl;
   std::cout << "Verificado (s/n)? ";
   string verificado;
@@ -82,13 +82,13 @@ bool cadastrar_usuario(Plataforma* plataforma) {
   return true;
 }
 
-void logar(Plataforma* plataforma) {
+void logar(Plataforma* plataforma) { //OK
   Usuario* usuario = escolhe_usuario(plataforma);
   if (usuario == NULL) return;
   tela_usuario(plataforma, usuario);
 }
 
-void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
+void tela_usuario(Plataforma* plataforma, Usuario* usuario) {  //OK
   while (true) {
     // Verifica se 'usuario' é verificado ou não
     UsuarioVerificado* usuarioVerificado = dynamic_cast<UsuarioVerificado*>(usuario);
@@ -101,7 +101,8 @@ void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
     std::cout << "ESCOLHA UMA OPCAO:" << endl;
     std::cout << "1) Postar video" << endl;
     std::cout << "2) Criar lista" << endl;
-    std::cout << "3) Assistir video" << endl;
+    std::cout << "3) Criar lista com videos mais vistos" << endl;
+    std::cout << "4) Assistir video" << endl;
     std::cout << "0) Deslogar" << endl;
 
     int opcao;
@@ -132,7 +133,7 @@ void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
 
 }
 
-void postar_video(Usuario* usuario) {
+void postar_video(Usuario* usuario) { // A CONSERTAR
   string videoCurto;
   
   UsuarioVerificado* usuarioVerificado = dynamic_cast<UsuarioVerificado*>(usuario);
@@ -181,7 +182,7 @@ void postar_video(Usuario* usuario) {
   }
 }
 
-bool criar_lista(Canal* canal) {
+bool criar_lista(Canal* canal) { //OK
   std::cout << endl;
   string nomeDaLista;
   std::cout << "Nome da lista: ";
@@ -227,7 +228,7 @@ bool criar_lista(Canal* canal) {
   return true;
 }
 
-bool assistir_video(Plataforma* plataforma) {
+bool assistir_video(Plataforma* plataforma) { //OK
   Usuario* usuario = escolhe_usuario(plataforma);
 
   std::cout << "Canal: " << usuario->getCanal()->getNome() << endl;
@@ -257,7 +258,7 @@ bool assistir_video(Plataforma* plataforma) {
   return true;
 }
 
-Conteudo* escolhe_conteudo(Canal* canal) {
+Conteudo* escolhe_conteudo(Canal* canal) { // OK
   vector<Conteudo*>* conteudos = canal->getConteudos();
   int opcao;
   std::cout << endl << "ESCOLHA O CONTEUDO" << endl;
@@ -286,7 +287,7 @@ Conteudo* escolhe_conteudo(Canal* canal) {
     return (*conteudos)[opcao-1];
 }
 
-Usuario* escolhe_usuario(Plataforma* plataforma) {
+Usuario* escolhe_usuario(Plataforma* plataforma) { // OK
   std::cout << endl << "ESCOLHA UM USUARIO" << endl;
   vector<Usuario*>* usuarios = plataforma->getUsuarios();
 
