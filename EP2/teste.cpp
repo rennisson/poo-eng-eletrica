@@ -25,6 +25,7 @@ bool criar_lista(Canal* canal);
 Usuario* escolhe_usuario(Plataforma* plataforma);
 Conteudo* escolhe_conteudo(Canal* canal);
 bool assistir_video(Plataforma* plataforma);
+void criar_lista_videos_mais_vistos(Plataforma* plataforma);
 
 // IMPLEMENTE A FUNCAO TESTE
 void teste () {
@@ -120,6 +121,10 @@ void tela_usuario(Plataforma* plataforma, Usuario* usuario) {
       break;
 
     case 3:
+      criar_lista_videos_mais_vistos(plataforma);
+      break;
+
+    case 4:
       assistir_video(plataforma);
       break;
     }
@@ -147,6 +152,8 @@ void postar_video(Usuario* usuario) {
   Video* video;
   if (videoCurto == "s") {
     try {
+      // CONSERTAR DESTRUTOR QUANDO DURACAO ESTÁ ERRADA
+      // DESCOBRIR DE ONDE O CONSTRUTOR É CHAMADO
       video = new VideoCurto(nomeDoVideo, duracao);
     }
     catch (invalid_argument *e) {
@@ -297,6 +304,10 @@ Usuario* escolhe_usuario(Plataforma* plataforma) {
 
   if (numeroUsuario == 0) return NULL;
   return (*usuarios)[numeroUsuario-1];
+}
+
+void criar_lista_videos_mais_vistos(Plataforma* plataforma) {
+  return;
 }
 
 //* COMENTE O MAIN AO SUBMETER
