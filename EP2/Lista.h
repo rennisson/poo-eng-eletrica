@@ -12,11 +12,7 @@ class Lista : public Conteudo {
         virtual ~Lista();
         void adicionar(Video* v);
         void adicionar(Lista* l);
-        void imprimir();
-        list<Video*>* getVideos();
-        int getVisualizacoes();
         virtual list<Video*>* getVideos();
-        virtual int getQuantidade();
         virtual int getVisualizacoes();
         virtual int getDuracao();
         virtual void imprimir();

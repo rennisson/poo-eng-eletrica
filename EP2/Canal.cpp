@@ -8,6 +8,8 @@
 #include <vector>
 #include <algorithm>
 
+bool compararVisualizacoes(Conteudo* i, Conteudo* j);
+
 
 // Construtores
 Canal::Canal(string nome) {
@@ -81,33 +83,27 @@ void Canal::postar(Conteudo* c) {
   // Verifica se o Conteudo 'c' é VideoCurto
   VideoCurto* vc = dynamic_cast<VideoCurto*>(c);
   if (vc != NULL) throw new NaoVerificado;
-
-  // Verifica se o video é repetido
-  vector<Conteudo*>::iterator repetido = find(conteudos->begin(), conteudos->end(), c);
-  if (repetido != conteudos->end()) throw new invalid_argument("Conteudo repetido");
-
-  // Se não é repetido, adiciona conteudo em 'conteudos'
   conteudos->insert(conteudos->end(), c);
 }
 
 Lista* Canal::criarListaComVideosMaisVistos(int quantidade, string nome) {
-  if (quantidade > conteudos->size()) throw new invalid_argument("Nao foi possivel criar a lista");
+  return NULL;
+//   if (quantidade > conteudos->size()) throw new invalid_argument("Nao foi possivel criar a lista");
   
-  vector<Conteudo*>* conteudosOrdenados = conteudos;
-  vector<int> intei;
-  sort(conteudosOrdenados->begin(), conteudosOrdenados->end(), compararVisualizacoes);
-  //reverse(conteudosOrdenados->begin(), conteudosOrdenados->end());
-  Lista* maisVistos = new Lista(nome);
+//   vector<Conteudo*>* conteudosOrdenados = conteudos;
+//   sort(conteudosOrdenados->begin(), conteudosOrdenados->end(), compararVisualizacoes);
+//   reverse(conteudosOrdenados->begin(), conteudosOrdenados->end());
+//   Lista* maisVistos = new Lista(nome);
   
-  for (int i = 0; i < quantidade; i++) {
-    Video* v = dynamic_cast<Video*>(conteudosOrdenados->back());
-    if (v != NULL) maisVistos->adicionar(v);
-  }
-  return maisVistos;
-}
+//   for (int i = 0; i < quantidade; i++) {
+//     Video* v = dynamic_cast<Video*>(conteudosOrdenados->back());
+//     if (v != NULL) maisVistos->adicionar(v);
+//   }
+//   return maisVistos;
+// }
 
-bool compararVisualizacoes(Conteudo* i, Conteudo* j) {
-  return i->getVisualizacoes() > i->getVisualizacoes();
+// bool compararVisualizacoes(Conteudo* i, Conteudo* j) {
+//   return i->getVisualizacoes() > i->getVisualizacoes();
 }
 
 void Canal::imprimir() {

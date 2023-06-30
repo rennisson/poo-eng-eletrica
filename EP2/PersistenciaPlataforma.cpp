@@ -92,5 +92,6 @@ Plataforma* PersistenciaPlataforma::carregar() {
 
     // input.close();
     // return conteudos;
+    return NULL;
 }
 
