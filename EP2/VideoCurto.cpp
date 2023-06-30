@@ -4,7 +4,7 @@
 using namespace std;
 
 VideoCurto::VideoCurto(string nome, int duracao): Video (nome, duracao) {
-    if (duracao <= 5) throw new invalid_argument("Duracao muito alta");
+    if (duracao > 5) throw new invalid_argument("Duracao muito alta");
 }
 
 VideoCurto::VideoCurto(string nome, int duracao, int visualizacoes): Video (nome, duracao, visualizacoes) {}
