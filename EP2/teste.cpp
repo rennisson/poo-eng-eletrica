@@ -9,6 +9,7 @@
 #include "Video.h"
 #include "VideoCurto.h"
 #include "NaoVerificado.h"
+#include "PersistenciaPlataforma.h"
 #include <vector>
 #include <stdexcept>
 
@@ -26,38 +27,49 @@ Usuario* escolhe_usuario(Plataforma* plataforma);
 Conteudo* escolhe_conteudo(Canal* canal);
 bool assistir_video(Plataforma* plataforma);
 void criar_lista_videos_mais_vistos(Plataforma* plataforma);
+void carregar_plataforma(string arquivo);
+void encerrar_plataforma(Plataforma* plataforma);
 
 // IMPLEMENTE A FUNCAO TESTE
 void teste () {
   Plataforma* plataforma = new Plataforma();
 
-  while (true) {
+  std::cout << "Deseja carregar a plataforma (s/n)? ";
+  string carregar;
+  std::cin >> carregar;
+
+  if (carregar == "s") {
+    std::cout << "Digite o nome do arquivo: ";
+    string arquivo;
+    std::cin >> arquivo;
+    carregar_plataforma(arquivo);
+  }
+
+  int opcao;
+  while (opcao != 0) {
     std::cout << endl << "ESCOLHA UMA OPCAO" << endl;
     std::cout << "1) Cadastrar usuario" << endl;
     std::cout << "2) Logar" << endl;
     std::cout << "0) Sair da plataforma" << endl;
 
-    int opcao;
     std::cin >> opcao;
     std::cout << endl;
 
     switch (opcao) {
-    case 0:
-      delete plataforma;
-      break;
+      case 1:
+        cadastrar_usuario(plataforma);
+        break;
 
-    case 1:
-      cadastrar_usuario(plataforma);
-      break;
+      case 2:
+        logar(plataforma);
+        break;
 
-    case 2:
-      logar(plataforma);
-      break;
-
-    default:
-      break;
+      default:
+        break;
     }
   }
+
+  encerrar_plataforma(plataforma);
 }
 
 bool cadastrar_usuario(Plataforma* plataforma) { // OK
@@ -309,6 +321,26 @@ Usuario* escolhe_usuario(Plataforma* plataforma) { // OK
 
 void criar_lista_videos_mais_vistos(Plataforma* plataforma) {
   return;
+}
+
+void carregar_plataforma(string arquivo) {
+  
+}
+
+void encerrar_plataforma(Plataforma* plataforma) {
+  std::cout << "Deseja salvar a plataforma (s/n)?";
+  string salvar;
+  std::cin >> salvar;
+
+  if (salvar == "s") {
+    std::cout << "Digite o nome do arquivo: ";
+    string arquivo;
+    std::cin >> arquivo;
+    PersistenciaPlataforma* x = new PersistenciaPlataforma(arquivo);
+    x->inserir(plataforma);
+  }
+
+  delete plataforma;
 }
 
 //* COMENTE O MAIN AO SUBMETER

@@ -9,7 +9,7 @@ Plataforma::Plataforma() {
 
 Plataforma::~Plataforma() {
     cout << "Destrutor de Plataforma" << endl;
-    for (Usuario* c : *usuarios) delete c;
+    for (Usuario* usuario : *usuarios) delete usuario;
     delete usuarios;
     cout << "Plataforma deletada" << endl;
 }
