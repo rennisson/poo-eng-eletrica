@@ -32,7 +32,7 @@ void encerrar_plataforma(Plataforma* plataforma);
 
 // IMPLEMENTE A FUNCAO TESTE
 void teste () {
-  Plataforma* plataforma = new Plataforma();
+  Plataforma* plataforma;
 
   std::cout << "Deseja carregar a plataforma (s/n)? ";
   string carregar;
@@ -42,7 +42,9 @@ void teste () {
     std::cout << "Digite o nome do arquivo: ";
     string arquivo;
     std::cin >> arquivo;
-    carregar_plataforma(arquivo);
+    PersistenciaPlataforma* x = new PersistenciaPlataforma(arquivo);
+    x->carregar();
+    cout << "passou" << endl;
   }
 
   int opcao;
@@ -89,7 +91,13 @@ bool cadastrar_usuario(Plataforma* plataforma) { // OK
   Usuario* usuario;
   if (verificado == "s") usuario = new UsuarioVerificado(nome, nomeDoCanal);
   else if (verificado == "n") usuario = new Usuario(nome, nomeDoCanal);
-  plataforma->adicionar(usuario);
+  try {
+    plataforma->adicionar(usuario);
+  }
+  catch (invalid_argument *e) {
+    e->what();
+    delete e;
+  }
 
   return true;
 }
@@ -327,7 +335,7 @@ void carregar_plataforma(string arquivo) {
   
 }
 
-void encerrar_plataforma(Plataforma* plataforma) {
+void encerrar_plataforma(Plataforma* plataforma) {  //OK
   std::cout << "Deseja salvar a plataforma (s/n)?";
   string salvar;
   std::cin >> salvar;

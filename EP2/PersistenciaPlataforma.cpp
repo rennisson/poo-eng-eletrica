@@ -52,46 +52,6 @@ void PersistenciaPlataforma::inserir(Plataforma* p) {
 
 // PENDENTE
 Plataforma* PersistenciaPlataforma::carregar() {
-
-    // ifstream input;
-    // input.open(arquivo);
-
-    // if (input.fail()) { // Arquivo nao encontrado
-    //     input.close();
-    //     return new Plataforma();
-    // }
-
-    // string tipo, nome;
-    // int duracao, visualizacoes;
-    // int quantidade = 0;
-
-    // input >> tipo >> nome;
-    // while (input) {
-    //     if (tipo == "v") {
-    //         Video* v = new Video(nome, duracao, visualizacoes);
-    //         conteudos[quantidade] = v;
-    //     }
-    //     else if (tipo == "s") {
-    //         VideoCurto *vc = new VideoCurto(nome, duracao, visualizacoes);
-    //         conteudos[quantidade] = vc;
-    //     }
-        
-    //     quantidade++;
-    //     input >> tipo >> nome >> duracao >> visualizacoes;
-    // }
-
-    // if (!input.eof()) {
-    //     input.close();
-    //     throw new logic_error("Erro de leitura");
-    // }
-    
-    // if (quantidade == 0) {
-    //     input.close();
-    //     return NULL;
-    // }
-
-    // input.close();
-    // return conteudos;
     return NULL;
 }
 
